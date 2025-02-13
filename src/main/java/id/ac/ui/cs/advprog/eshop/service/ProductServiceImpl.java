@@ -30,17 +30,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findProductByID(int productId) {
-        List<Product> allProduct = findAll();
-        for(Product currentProduct : allProduct){
-            int currentProductID = Integer.parseInt(currentProduct.getProductId());
-            if(currentProductID == productId){
-                return currentProduct;
-            }
-        }
-        return null;
+    public Product findProductById(int productId) {
+        return productRepository.findProductById(productId);
     }
     public void edit(Product product){
         productRepository.edit(product);
+    }
+
+    public void delete(int productId) {
+        productRepository.deleteProductById(productId);
     }
 }

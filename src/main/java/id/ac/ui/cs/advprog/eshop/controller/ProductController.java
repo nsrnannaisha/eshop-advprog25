@@ -38,8 +38,8 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String editProductPage(Model model, @PathVariable("id") String productId){
-        int productID = Integer.parseInt(productId);
-        Product product = service.findProductByID(productID);
+        int productbyId = Integer.parseInt(productId);
+        Product product = service.findProductById(productbyId);
         model.addAttribute("product", product);
         return "editProduct";
     }
@@ -48,5 +48,11 @@ public class ProductController {
         product.setProductId(productId);
         service.edit(product);
         return "redirect:../list";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProductPage(Model model, @PathVariable("id") String productId){
+        service.delete(Integer.parseInt(productId));
+        return "redirect:/product/list";
     }
 }
