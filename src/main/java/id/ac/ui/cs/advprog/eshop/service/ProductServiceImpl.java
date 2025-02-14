@@ -17,6 +17,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(Product product) {
+        if (product.getProductQuantity() < 0) {
+            product.setProductQuantity(0);
+        }
+
         productRepository.create(product);
         return product;
     }
@@ -34,6 +38,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductById(productId);
     }
     public void edit(Product product){
+        if (product.getProductQuantity() < 0) {
+            product.setProductQuantity(0);
+        }
         productRepository.edit(product);
     }
 

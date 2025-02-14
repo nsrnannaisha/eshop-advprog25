@@ -38,8 +38,8 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String editProductPage(Model model, @PathVariable("id") String productId){
-        String productbyId = productId;
-        Product product = service.findProductById(productbyId);
+        String productById = productId;
+        Product product = service.findProductById(productById);
         model.addAttribute("product", product);
         return "editProduct";
     }

@@ -31,8 +31,8 @@ public class ProductRepository {
         return null;
     }
     public Product edit(Product editProduct){
-        String productbyId = editProduct.getProductId();
-        Product product = findProductById(productbyId);
+        String productById = editProduct.getProductId();
+        Product product = findProductById(productById);
         String productName = editProduct.getProductName();
         int productQuantity = editProduct.getProductQuantity();
         product.setProductName(productName);
