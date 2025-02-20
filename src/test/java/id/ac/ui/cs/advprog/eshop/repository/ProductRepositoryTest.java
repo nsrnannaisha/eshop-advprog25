@@ -19,6 +19,7 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setUp() {
+        // this method can be used for initializing test data in the future
     }
 
     @Test
