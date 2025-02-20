@@ -3,10 +3,10 @@ name: SonarCloud Analysis
 on:
   push:
     branches:
-      - '**'
+      - "main"
   pull_request:
     branches:
-      - '**'
+      - "main"
 
 jobs:
   sonar:
@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '21'  # Sesuai dengan Java di proyek
+          java-version: '21'
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
