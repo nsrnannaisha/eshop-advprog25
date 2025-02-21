@@ -1,0 +1,20 @@
+# Ignore IntelliJ IDEA project files
+.idea/
+
+# Ignore git-related files
+.git/
+.gitignore
+
+# Ignore build artifacts and logs
+*.log
+*.tmp
+target/
+build/
+
+# Ignore Docker-related files
+Dockerfile*
+.dockerignore
+
+# Ignore other unnecessary files
+*.md
+README.md
