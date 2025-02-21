@@ -2,6 +2,9 @@
 NPM   : 2306275960  
 Kelas : B**
 
+> Link Deployment: https://advshop-aisss.koyeb.app/
+
+# Module 1
 ## Reflection 1
 
 ### Clean Code Principle
@@ -69,3 +72,26 @@ Ya, kode baru dapat menurunkan kualitas jika terdapat banyak duplikasi, karena s
 - Menerapkan _dependency injection_ (Spring atau Guice) untuk mengelola dependensi dalam tes yang memudahkan pengaturan objek dan membuat kode lebih fleksibel.
 - Gunakan _annotation_ untuk _setup_ yang umum (@SetupEnvironment) untuk menangani inisialisasi atau konfigurasi yang sering diulang agar duplikasi kode berkurang dan membuat tes lebih rapi.
 - Menerapkan _modular testing_, yaitu memisahkan _test case_ ke dalam modul-modul kecil yang independen yang dapat memudahkan pemeliharaan dan penggunaan kembali kode.
+
+# Module 2
+## Reflection
+
+### Code Quality Issues
+1. _Method_ kosong tanpa implementasi  
+-> ```ProductRepositoryTest.java```     
+Terdapat _method_ ```setUp()``` yang kosong tanpa implementasi. _Method_ diperbaiki dengan menambahkan _comment_ yang menjelaskan alasan _method_ tersebut kosong.
+2. _Modifier public_ yang tidak diperlukan   
+-> ```ProductRepositoryTest.java```, ```ProductTest.java```, ```CreateProductFunctionalTest.java```  
+Terdapat _class_ dengan _public modifier_ yang tidak diperlukan untuk _testing_. _Class_ diperbaiki dengan menghapus _modifier public_ tersebut.
+3. ```throws Exception``` yang tidak diperlukan  
+-> ```HomePageFunctionalTest.java```, ```ProductFunctionalTest.java```  
+Terdapat _method_ dengan ```throws exception``` yang tidak diperlukan untuk _testing_. _Method_ diperbaiki dengan menghapus ```throws Exception``` tersebut.
+4. Penggunaan _field injection_  
+-> ```ProductServiceImpl.java```, ```ProductController.java```  
+Terdapat dependensi yang di-_inject_ langsung ke dalam _field_ menggunakan anotasi ```@Autowired```. Dependesi diperbaiki dengan digantinya dependensi menjadi konstruktor _injection_ agar lebih aman dan mudah diuji.
+5. _Dependency_ tidak terkelompok dengan baik   
+-> ```build.gradle.kts```  
+_Dependencies_ ini tidak dikelompokkan berdasarkan tujuan penggunaannya. Dependesi diperbaiki dengan mengelompokkannya menjadi kelompok yang lebih terstruktur.
+
+### CI/CD Workflows Implementation
+Ya, implementasi CI/CD saat ini telah memenuhi definisi _Continuous Integration_ (CI) dan _Continuous Deployment_ (CD). Setiap kali ada perubahan kode, _workflow_ otomatis menjalankan pengujian dan analisis kualitas kode untuk memastikan bahwa kode yang digabungkan ke _repository_ utama tetap stabil dan tidak menyebabkan _error_ yang tidak terdeteksi. Dalam proses ini, `ci.yml` berfungsi untuk menjalankan pengujian otomatis, `scorecard.yml` untuk analisis keamanan dan kualitas kode, serta `sonarcloud.yml` yang berfungsi untuk integrasi dengan SonarCloud dalam mengevaluasi _code quality_. Selain itu, `Dockerfile` digunakan untuk membangun _container image_ yang nantinya akan digunakan dalam proses _deployment_. Setelah pengujian berhasil, kode akan langsung di-_deploy_ ke PaaS (Koyeb) tanpa perlu perubahan secara manual. Dengan demikian, setiap perubahan kode dapat diuji dan di-_deploy_ dengan lebih efisien. 
