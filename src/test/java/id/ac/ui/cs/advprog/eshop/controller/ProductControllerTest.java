@@ -37,7 +37,7 @@ class ProductControllerTest {
     @Test
     void testCreateProduct() {
         Product product = new Product();
-        String view = controller.createProduct(product, model);
+        String view = controller.createProductPost(product, model);
         verify(service).create(product);
         assertEquals("redirect:list", view);
     }
