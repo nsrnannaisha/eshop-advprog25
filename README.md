@@ -4,6 +4,9 @@ Kelas : B**
 
 > Link Deployment: https://advshop-aisss.koyeb.app/
 
+<details>
+  <summary>Module 1</summary>
+
 # Module 1
 ## Reflection 1
 
@@ -73,6 +76,11 @@ Ya, kode baru dapat menurunkan kualitas jika terdapat banyak duplikasi, karena s
 - Gunakan _annotation_ untuk _setup_ yang umum (@SetupEnvironment) untuk menangani inisialisasi atau konfigurasi yang sering diulang agar duplikasi kode berkurang dan membuat tes lebih rapi.
 - Menerapkan _modular testing_, yaitu memisahkan _test case_ ke dalam modul-modul kecil yang independen yang dapat memudahkan pemeliharaan dan penggunaan kembali kode.
 
+</details>
+
+<details>
+  <summary>Module 2</summary>
+
 # Module 2
 ## Reflection
 
@@ -94,4 +102,51 @@ Terdapat dependensi yang di-_inject_ langsung ke dalam _field_ menggunakan anota
 _Dependencies_ ini tidak dikelompokkan berdasarkan tujuan penggunaannya. Dependesi diperbaiki dengan mengelompokkannya menjadi kelompok yang lebih terstruktur.
 
 ### CI/CD Workflows Implementation
-Ya, implementasi CI/CD saat ini telah memenuhi definisi _Continuous Integration_ (CI) dan _Continuous Deployment_ (CD). Setiap kali ada perubahan kode, _workflow_ otomatis menjalankan pengujian dan analisis kualitas kode untuk memastikan bahwa kode yang digabungkan ke _repository_ utama tetap stabil dan tidak menyebabkan _error_ yang tidak terdeteksi. Dalam proses ini, `ci.yml` berfungsi untuk menjalankan pengujian otomatis, `scorecard.yml` untuk analisis keamanan dan kualitas kode, serta `sonarcloud.yml` yang berfungsi untuk integrasi dengan SonarCloud dalam mengevaluasi _code quality_. Selain itu, `Dockerfile` digunakan untuk membangun _container image_ yang nantinya akan digunakan dalam proses _deployment_. Setelah pengujian berhasil, kode akan langsung di-_deploy_ ke PaaS (Koyeb) tanpa perlu perubahan secara manual. Dengan demikian, setiap perubahan kode dapat diuji dan di-_deploy_ dengan lebih efisien. 
+Ya, implementasi CI/CD saat ini telah memenuhi definisi _Continuous Integration_ (CI) dan _Continuous Deployment_ (CD). Setiap kali ada perubahan kode, _workflow_ otomatis menjalankan pengujian dan analisis kualitas kode untuk memastikan bahwa kode yang digabungkan ke _repository_ utama tetap stabil dan tidak menyebabkan _error_ yang tidak terdeteksi. Dalam proses ini, `ci.yml` berfungsi untuk menjalankan pengujian otomatis, `scorecard.yml` untuk analisis keamanan dan kualitas kode, serta `sonarcloud.yml` yang berfungsi untuk integrasi dengan SonarCloud dalam mengevaluasi _code quality_. Selain itu, `Dockerfile` digunakan untuk membangun _container image_ yang nantinya akan digunakan dalam proses _deployment_. Setelah pengujian berhasil, kode akan langsung di-_deploy_ ke PaaS (Koyeb) tanpa perlu perubahan secara manual. Dengan demikian, setiap perubahan kode dapat diuji dan di-_deploy_ dengan lebih efisien.
+</details>
+
+<details>
+  <summary>Module 3</summary>
+
+# Module 3
+## Reflection
+
+### Principles applied to my project
+1. Single Responsibility Principle (SRP)   
+   Saya memastikan agar setiap _class_ memiliki satu tanggung jawab, yaitu dengan memindahkan pembuatan UUID dari ```CarRepository``` ke ```CarServiceImpl``` sehingga _repository_ hanya fokus pada penyimpanan data.
+2. Open/Closed Principle (OCP)  
+   Saya menerapkan OCP dengan membuat ```CarRepository``` lebih fleksibel, yang memungkinkan penambahan fitur baru tanpa mengubah _method_ yang sudah ada.
+3. Liskov Substitution Principle (LSP)  
+   Saya memastikan bahwa semua _subclass_ atau implementasi dapat menggantikan _superclass_ tanpa mengubah perilaku yang diharapkan, misalnya dengan menjaga kompatibilitas ```CarRepositoryImpl``` terhadap ```CarRepository```.
+4. Interface Segregation Principle (ISP)  
+   Saya memastikan bahwa setiap _interface_ hanya berisi _method_ yang relevan untuk _class_ yang mengimplementasikannya sehingga tidak harus ketergantungan pada _method_ yang tidak digunakan.
+5. Dependency Inversion Principle (DIP)  
+   Saya menerapkan DIP dengan membuat ```CarServiceImpl``` bergantung pada ```CarRepository```, bukan pada implementasi ```CarRepositoryImpl``` sehingga penyimpanan data dapat diganti tanpa mengubah kode ```service```.
+
+### Applying SOLID adventages
+Menerapkan prinsip SOLID memberikan beberapa keuntungan, di antaranya:
+1. Kode lebih mudah dipahami dan dikelola  
+Dengan menerapkan SRP, setiap kelas hanya memiliki satu tanggung jawab sehingga kode lebih terorganisir dan lebih mudah dipahami.
+2. Kode lebih fleksibel & mudah dikembangkan    
+Dengan menerapkan OCP, kita dapat memperluas fungsionalitas sistem tanpa mengubah kode yang sudah ada. 
+3. Meminimalkan _error_ akibat perubahan  
+Dengan LSP, _subclass_ dapat digunakan sebagai pengganti _superclass_ tanpa menyebabkan masalah. 
+4. Meningkatkan keefektifan kode  
+Dengan menerapkan ISP, kita menghindari _class_ yang harus mengimplementasikan metode yang tidak mereka perlukan.
+5. Lebih mudah melakukan perubahan  
+Dengan DIP, kode menjadi lebih fleksibel terhadap perubahan.
+ 
+### Not applying SOLID disadvantages
+Jika prinsip SOLID tidak diterapkan, proyek akan memiliki beberapa kekurangan, di antaranya:
+1. Kode nerantakan dan sulit dipahami  
+Tanpa SRP, satu kelas bisa memiliki terlalu banyak tanggung jawab.
+2. Sulit menambahkan fitur baru  
+Jika tidak menerapkan OCP, setiap kali ada fitur baru, kita harus mengubah kode yang sudah ada.
+3. Error saat menggunakan subclass  
+Jika LSP tidak diterapkan, _subclass_ mungkin tidak berfungsi sebagaimana harusnya. 
+4. Kelas dipaksa menggunakan method yang tidak dibutuhkan  
+Kode mungkin menjadi lebih rumit dan meningkatkan kemungkinan _error_.
+5. Sulit mengganti implementasi atau teknologi  
+Jika DIP tidak diterapkan, _class_ yang bergantung pada _class_ lainnya akan sulit untuk diganti teknologinya karena harus mengubah banyak kode 
+
+</details>
