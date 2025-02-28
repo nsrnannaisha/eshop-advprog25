@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CarRepository {
+public class CarRepository implements RepositoryInterface{
     private List<Car> carData;
 
     public CarRepository() {
@@ -32,6 +32,7 @@ public class CarRepository {
         return null;
     }
 
+    @Override
     public Car update(String id, Car updatedCar) {
         for (int i = 0; i < carData.size(); i++) {
             Car car = carData.get(i);

@@ -23,7 +23,8 @@ public class CarServiceImpl implements CarService {
         if (car.getCarId() == null) {
             car.setCarId(UUID.randomUUID().toString());
         }
-        return carRepository.create(car);
+        carRepository.create(car);
+        return car;
     }
 
     @Override
