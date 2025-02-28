@@ -9,7 +9,11 @@ import java.util.List;
 
 @Repository
 public class CarRepository {
-    private List<Car> carData = new ArrayList<>();
+    private List<Car> carData;
+
+    public CarRepository() {
+        this.carData = new ArrayList<>();
+    }
 
     public Car create(Car car){
         carData.add(car);

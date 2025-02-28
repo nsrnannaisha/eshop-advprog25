@@ -25,6 +25,7 @@ public class CarServiceImpl implements CarService {
         if (car.getCarId() == null) {
             car.setCarId(UUID.randomUUID().toString());
         }
+        carRepository.create(car);
         return car;
     }
 
