@@ -2,7 +2,9 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Getter;
+
 import java.util.Map;
+import java.util.UUID;
 
 @Getter
 public class Payment {
@@ -13,7 +15,12 @@ public class Payment {
     private String status;
 
     public Payment(String paymentId, Order order, String method, Map<String, String> paymentData) {
+        this(order, method, paymentData);
         this.paymentId = paymentId;
+    }
+
+    public Payment(Order order, String method, Map<String, String>paymentData){
+        this.paymentId = UUID.randomUUID().toString();
         this.order = order;
         this.method = method;
         this.paymentData = paymentData;
