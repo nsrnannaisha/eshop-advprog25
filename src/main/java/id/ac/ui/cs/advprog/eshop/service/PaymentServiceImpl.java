@@ -12,6 +12,37 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     public PaymentServiceImpl(PaymentRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
     }
 
+    @Override
+    public Payment processPayment(Payment payment) {
+        if (isValidPayment(payment)) {
+            payment.setStatus(PaymentStatus.SUCCESS.getValue());
+            return paymentRepository.save(payment);
+        } else {
+            payment.setStatus(PaymentStatus.REJECTED.getValue());
+            return paymentRepository.save(payment);
+        }
+    }
+
+    private boolean isValidPayment(Payment payment) {
+        return payment.getStatus().equals(PaymentStatus.SUCCESS.getValue());
+    }
+
+    @Override
+    public Payment findPaymentById(String paymentId) {
+        return paymentRepository.findById(paymentId);
+    }
+
+    @Override
+    public void updatePaymentStatus(String paymentId, String status) {
+        Payment payment = paymentRepository.findById(paymentId);
+        if (payment != null) {
+            payment.setStatus(status);
+            paymentRepository.save(payment);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
