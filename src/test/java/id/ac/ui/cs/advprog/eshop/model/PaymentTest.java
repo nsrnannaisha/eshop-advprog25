@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,7 +47,7 @@ public class PaymentTest {
 
         Payment payment = new Payment("a1b2c3d4-e5f6-7890-abcd-ef1234567890", orders.get(0), "VOUCHER", paymentData);
 
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -56,7 +57,7 @@ public class PaymentTest {
 
         Payment payment = new Payment("b2c3d4e5-f6g7-890a-bcde-f12345678901", orders.get(0), "VOUCHER", paymentData);
 
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -66,7 +67,7 @@ public class PaymentTest {
 
         Payment payment = new Payment("c3d4e5f6-7890-abcd-ef12-345678901234", orders.get(0), "VOUCHER", paymentData);
 
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -76,7 +77,7 @@ public class PaymentTest {
 
         Payment payment = new Payment("d4e5f6g7-890a-bcde-f123-456789012345", orders.get(0), "VOUCHER", paymentData);
 
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -87,7 +88,7 @@ public class PaymentTest {
 
         Payment payment = new Payment("e5f6g7h8-90ab-cdef-1234-567890123456", orders.get(1), "BANK", paymentData);
 
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -98,7 +99,7 @@ public class PaymentTest {
 
         Payment payment = new Payment("f6g7h8i9-0abc-def1-2345-678901234567", orders.get(1), "BANK", paymentData);
 
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -109,6 +110,6 @@ public class PaymentTest {
 
         Payment payment = new Payment("g7h8i9j0-1abc-def2-3456-789012345678", orders.get(1), "BANK", paymentData);
 
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 }
