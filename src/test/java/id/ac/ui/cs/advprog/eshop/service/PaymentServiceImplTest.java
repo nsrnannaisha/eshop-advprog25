@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PaymentServiceImpl implements PaymentService {
+public class PaymentServiceImplTest implements PaymentService {
     private final PaymentRepository paymentRepository;
 
     @Autowired
-    public PaymentServiceImpl(PaymentRepository paymentRepository) {
+    public PaymentServiceImplTest(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
 

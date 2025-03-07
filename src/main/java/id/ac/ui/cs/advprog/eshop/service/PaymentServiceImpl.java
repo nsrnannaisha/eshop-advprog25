@@ -27,7 +27,8 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private boolean isValidPayment(Payment payment) {
-        return payment.getStatus().equals(PaymentStatus.SUCCESS.getValue());
+        return payment != null && payment.getStatus() != null &&
+                payment.getStatus().equals(PaymentStatus.SUCCESS.getValue());
     }
 
     @Override
