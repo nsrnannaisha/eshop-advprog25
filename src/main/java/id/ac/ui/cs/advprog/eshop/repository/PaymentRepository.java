@@ -6,7 +6,21 @@ import java.util.List;
 
 public class PaymentRepository {
     private final List<Payment> payments = new ArrayList<>();
-    public Payment save(Payment payment) { return null; }
-    public Payment findById(String id) { return null; }
-    public List<Payment> getAllPayments() { return null; }
+
+    public void save(Payment payment) {
+        payments.add(payment);
+    }
+
+    public Payment findById(String paymentId) {
+        for (Payment payment : payments) {
+            if (payment.getPaymentId().equals(paymentId)) {
+                return payment;
+            }
+        }
+        return null;
+    }
+
+    public List<Payment> findAll() {
+        return new ArrayList<>(payments);
+    }
 }
