@@ -52,7 +52,7 @@ Jumlah _unit test_ dalam satu kelas bersifat fleksibel, tergantung pada tingkat 
 _Unit test_ harus dapat mencakup semua logika dan variasi _input_ yang mungkin diterima oleh sistem agar pengembang dapat memastikan bahwa setiap bagian kode sudah berfungsi dengan benar.
 
 **How to make sure that our unit tests are enough to verify our program?**   
-Untuk memastikan _unit test_ cukup memverifikasi program, kita dapat menargetkan tercapainya _code coverage_ pada bagian kritis. Selain itu, penting untuk menulis _test case_ yang mencakup berbagai skenario, serta memastikan semua cabang kode diuji dengan baik. Pendekatan _Test-Driven Development_ (TDD) juga membantu memastikan setiap fungsi diuji sejak awal pengembangan dan _negative testing_ memastikan program mampu menangani _input_ tidak valid. Melakukan _review_ dan _refactor test_ secara berkala, serta mengotomatisasi _unit test_ melalui integrasi ke dalam _CI/CD pipeline_, juga akan menjaga tes tetap relevan dan memastikan pengujian dilakukan secara konsisten setiap ada perubahan kode.
+Untuk memastikan _unit test_ cukup memverifikasi program, kita dapat menargetkan tercapainya _code coverage_ pada bagian kritis. Selain itu, penting untuk menulis _test case_ yang mencakup berbagai skenario, serta memastikan semua cabang kode diuji dengan baik. Pendekatan _Test-Driven Development_ (TDD) juga membantu memastikan setiap fungsi diuji sejak awal pengembangan dan _negative testing_ memastikan program mampu menangani _input_ tidak valid. Melakukan _review_ dan _refactor test_ secara berkala, serta mengotomatisasi _unit test_ melalui integrasi ke dalam _CI/CD pipeline_, juga akan menjaga test tetap relevan dan memastikan pengujian dilakukan secara konsisten setiap ada perubahan kode.
 
 **If I have 100% code coverage, does that mean my code has no bugs or errors?**
 Tidak. Meskipun _code coverage_ mencapai 100%, bukan berarti kode bebas dari _bug_ atau _error_. _Code coverage_ hanya memastikan semua baris kode telah dijalankan, namun tidak menjamin semua skenario telah diuji. Untuk memastikan kualitas kode, diperlukan _unit test_ yang menguji hasil yang diharapkan, penanganan _error_, dan _edge cas_e, serta dilengkapi dengan _integration test_ dan _end-to-end test_.
@@ -72,8 +72,8 @@ Ya, kode baru dapat menurunkan kualitas jika terdapat banyak duplikasi, karena s
 **Improvement suggestions**
 - Menggunakan _design pattern_ seperti _factory method_ untuk menghasilkan objek yang sering digunakan dalam tes. Hal ini mengurangi duplikasi kode dan memudahkan perubahan di satu tempat.
 - Memisahkan konfigurasi (URL, kredensial, atau _environment variables_) ke _file_ terpisah (.properties atau .yaml) agar kode lebih tertata dan mudah diubah.
-- Menerapkan _dependency injection_ (Spring atau Guice) untuk mengelola dependensi dalam tes yang memudahkan pengaturan objek dan membuat kode lebih fleksibel.
-- Gunakan _annotation_ untuk _setup_ yang umum (@SetupEnvironment) untuk menangani inisialisasi atau konfigurasi yang sering diulang agar duplikasi kode berkurang dan membuat tes lebih rapi.
+- Menerapkan _dependency injection_ (Spring atau Guice) untuk mengelola dependensi dalam test yang memudahkan pengaturan objek dan membuat kode lebih fleksibel.
+- Gunakan _annotation_ untuk _setup_ yang umum (@SetupEnvironment) untuk menangani inisialisasi atau konfigurasi yang sering diulang agar duplikasi kode berkurang dan membuat test lebih rapi.
 - Menerapkan _modular testing_, yaitu memisahkan _test case_ ke dalam modul-modul kecil yang independen yang dapat memudahkan pemeliharaan dan penggunaan kembali kode.
 
 </details>
@@ -150,3 +150,20 @@ Kode mungkin menjadi lebih rumit dan meningkatkan kemungkinan _error_.
 Jika DIP tidak diterapkan, _class_ yang bergantung pada _class_ lainnya akan sulit untuk diganti teknologinya karena harus mengubah banyak kode 
 
 </details>
+
+<details>
+  <summary>Module 4</summary>
+  
+# Module 4
+## Reflection 1
+
+1. Apakah alur Test-Driven Development (TDD) ini cukup berguna?  
+   Alur TDD dalam latihan ini cukup membantu karena memastikan kode bekerja dengan benar sejak awal dan memudahkan perbaikan tanpa merusak fungsionalitas yang sudah ada. Menulis test lebih dulu juga membuat saya lebih fokus pada kebutuhan fitur, seperti validasi status di kelas Order.
+   
+2. Apakah test sudah mengikuti prinsip F.I.R.S.T.?
+   Mnenurut saya, test yang dibuat sudah mengikuti prinsip F.I.R.S.T. karena sudah memenuhi:
+   - Fast: test sudah cukup cepat karena hanya menguji unit kecil.
+   - Independent: Sebagian besar test tidak bergantung pada test lain.
+   - Repeatable: Hasil test selalu sama di berbagai lingkungan dan tidak ada faktor eksternal yang memengaruhi.
+   - Self-validating: Test memberikan hasil yang jelas antara gagal atau berhasil.
+   - Timely: Test sudah dibuat sebelum atau selama implementasi program.
