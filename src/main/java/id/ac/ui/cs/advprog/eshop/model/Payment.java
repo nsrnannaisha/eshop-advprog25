@@ -1,13 +1,10 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Arrays;
 import java.util.Map;
 
 @Getter
-@Setter
 public class Payment {
     private String paymentId;
     private Order order;
@@ -32,7 +29,7 @@ public class Payment {
                 validateBankTransfer();
                 break;
             default:
-                this.status = "REJECTED";
+                this.status = PaymentStatus.REJECTED.getValue();
         }
     }
 
@@ -41,24 +38,28 @@ public class Payment {
         if (voucherCode != null && voucherCode.length() == 16 &&
                 voucherCode.startsWith("ESHOP") &&
                 voucherCode.replaceAll("[^0-9]", "").length() == 8) {
-            this.status = "SUCCESS";
+            setStatus(PaymentStatus.SUCCESS.getValue());
         } else {
-            this.status = "REJECTED";
+            setStatus(PaymentStatus.REJECTED.getValue());
         }
     }
 
     private void validateBankTransfer() {
         String bankName = paymentData.get("bankName");
         String referenceCode = paymentData.get("referenceCode");
-        this.status = (bankName != null && !bankName.isEmpty() &&
-                referenceCode != null && !referenceCode.isEmpty()) ? "SUCCESS" : "REJECTED";
+        if (bankName != null && !bankName.isEmpty() &&
+                referenceCode != null && !referenceCode.isEmpty()) {
+            setStatus(PaymentStatus.SUCCESS.getValue());
+        } else {
+            setStatus(PaymentStatus.REJECTED.getValue());
+        }
     }
 
     public void setStatus(String status) {
-        String[] statusList = {"REJECTED", "SUCCESS", "PENDING"};
-        if (Arrays.stream(statusList).noneMatch(item -> item.equals(status))) {
+        if (PaymentStatus.contains(status)) {
+            this.status = status;
+        } else {
             throw new IllegalArgumentException();
         }
-        this.status = status;
     }
 }
