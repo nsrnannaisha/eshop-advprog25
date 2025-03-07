@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
@@ -66,5 +67,19 @@ public class PaymentRepositoryTest {
         assertEquals(2, allPayments.size());
         assertTrue(allPayments.contains(payment1));
         assertTrue(allPayments.contains(payment2));
+    }
+
+    @Test
+    void testUpdateStatus() {
+        repository.save(payment1);
+        repository.updateStatus(payment1.getPaymentId(), PaymentStatus.SUCCESS.getValue());
+
+        assertEquals(PaymentStatus.SUCCESS.getValue(), repository.findById(payment1.getPaymentId()).getStatus());
+    }
+
+    @Test
+    void testUpdateStatusInvalid() {
+        repository.save(payment1);
+        assertThrows(IllegalArgumentException.class, () -> repository.updateStatus(payment1.getPaymentId(), "INVALID_STATUS"));
     }
 }
