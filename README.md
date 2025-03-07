@@ -158,7 +158,7 @@ Jika DIP tidak diterapkan, _class_ yang bergantung pada _class_ lainnya akan sul
 ## Reflection 1
 
 1. Apakah alur Test-Driven Development (TDD) ini cukup berguna?  
-   Alur TDD dalam latihan ini cukup membantu karena memastikan kode bekerja dengan benar sejak awal dan memudahkan perbaikan tanpa merusak fungsionalitas yang sudah ada. Menulis test lebih dulu juga membuat saya lebih fokus pada kebutuhan fitur, seperti validasi status di kelas Order.
+   Ya, TDD cukup membantu karena dari awal saya bisa memastikan agar kode berjalan dengan benar. Selain itu, lebih mudah untuk memperbaiki atau mengubah suatu bagian tanpa khawatir merusak bagian lain. Dengan menulis test dulu, saya juga menjadi lebih fokus pada fitur dan fungsionalitas yang dibutuhkan.
    
 2. Apakah test sudah mengikuti prinsip F.I.R.S.T.?  
    Menurut saya, test yang dibuat sudah mengikuti prinsip F.I.R.S.T. karena sudah memenuhi:
