@@ -160,8 +160,8 @@ Jika DIP tidak diterapkan, _class_ yang bergantung pada _class_ lainnya akan sul
 1. Apakah alur Test-Driven Development (TDD) ini cukup berguna?  
    Alur TDD dalam latihan ini cukup membantu karena memastikan kode bekerja dengan benar sejak awal dan memudahkan perbaikan tanpa merusak fungsionalitas yang sudah ada. Menulis test lebih dulu juga membuat saya lebih fokus pada kebutuhan fitur, seperti validasi status di kelas Order.
    
-2. Apakah test sudah mengikuti prinsip F.I.R.S.T.?
-   Mnenurut saya, test yang dibuat sudah mengikuti prinsip F.I.R.S.T. karena sudah memenuhi:
+2. Apakah test sudah mengikuti prinsip F.I.R.S.T.?  
+   Menurut saya, test yang dibuat sudah mengikuti prinsip F.I.R.S.T. karena sudah memenuhi:
    - Fast: test sudah cukup cepat karena hanya menguji unit kecil.
    - Independent: Sebagian besar test tidak bergantung pada test lain.
    - Repeatable: Hasil test selalu sama di berbagai lingkungan dan tidak ada faktor eksternal yang memengaruhi.
